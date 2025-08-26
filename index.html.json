@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CSS Box Model Demo</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header container">
+      <nav class="nav" aria-label="Primary">
+        <div class="brand">CSS Box Model</div>
+        <ul class="nav__list">
+          <li><a href="#intro">Intro</a></li>
+          <li><a href="#cards">Cards</a></li>
+          <li><a href="#box">Box Model</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container">
+          <h1>Build with the CSS Box Model</h1>
+          <p>
+            Explore how margin, padding, borders, and backgrounds shape your
+            layout. This page uses only HTML and CSS.
+          </p>
+          <a class="btn" href="#cards">See the cards</a>
+        </div>
+      </section>
+
+      <section id="intro" class="section container">
+        <h2>Introduction</h2>
+        <p>
+          The CSS Box Model describes the rectangular boxes that wrap around
+          every element. Each box has <strong>content</strong>, optional
+          <strong>padding</strong>, an optional <strong>border</strong>, and an
+          optional <strong>margin</strong>.
+        </p>
+        <p class="muted">
+          Use background color, borders, and spacing utilities here to make box
+          boundaries visible.
+        </p>
+      </section>
+
+      <section id="cards" class="section container">
+        <h2>Cards</h2>
+        <div class="card-grid">
+          <article class="card">
+            <h3>Card One</h3>
+            <p>
+              This card uses padding for internal spacing and margin via the grid
+              gap. A border makes its edges clear.
+            </p>
+            <a class="btn btn--secondary" href="#">Action</a>
+          </article>
+          <article class="card">
+            <h3>Card Two</h3>
+            <p>
+              Notice consistent spacing on headings and paragraphs for readable
+              rhythm.
+            </p>
+            <a class="btn btn--secondary" href="#">Action</a>
+          </article>
+          <article class="card">
+            <h3>Card Three</h3>
+            <p>
+              The Box Model helps align and size components predictably across
+              the page.
+            </p>
+            <a class="btn btn--secondary" href="#">Action</a>
+          </article>
+        </div>
+      </section>
+
+      <section id="box" class="section container">
+        <h2>Box Model Demo</h2>
+        <div class="box-demo-wrapper">
+          <div class="box-demo">
+            <p>Content box with padding, border, and margin.</p>
+          </div>
+          <div class="box-demo box-demo--alt">
+            <p>Alternate box with different padding and border.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="section container">
+        <h2>Contact</h2>
+        <form class="form" action="#" method="get">
+          <div class="form__row">
+            <label for="name">Name</label>
+            <input id="name" type="text" placeholder="Your name" />
+          </div>
+          <div class="form__row">
+            <label for="message">Message</label>
+            <textarea id="message" rows="4" placeholder="Say hi"></textarea>
+          </div>
+          <button class="btn" type="submit">Send</button>
+        </form>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <small>&copy; 2025 CSS Demo</small>
+      </div>
+    </footer>
+  </body>
+  </html>

@@ -1,0 +1,315 @@
+/*
+  CSS Box Model Demo Styles
+  - External stylesheet only; no frameworks
+  - Organized for readability and maintainability
+*/
+
+/* =========================
+   Design tokens (CSS vars)
+   ========================= */
+:root {
+  --color-bg: #0f172a;           /* slate-900 */
+  --color-surface: #111827;      /* gray-900 */
+  --color-elevated: #0b1222;     /* slightly deeper surface */
+  --color-text: #e5e7eb;         /* gray-200 */
+  --color-muted: #94a3b8;        /* slate-400 */
+  --color-border: #1f2937;       /* gray-800 */
+  --color-accent: #60a5fa;       /* blue-400 */
+  --color-accent-strong: #2563eb;/* blue-600 */
+  --color-hero: #0b1222;
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.25);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.35);
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+}
+
+/* =========================
+   Base / Reset
+   ========================= */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell,
+    Noto Sans, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  color: var(--color-text);
+  background: radial-gradient(1200px 600px at 10% -10%, #0a1224 0%, transparent 60%),
+    radial-gradient(1200px 600px at 110% 10%, #0a1428 0%, transparent 50%),
+    var(--color-bg);
+  line-height: 1.6;
+}
+
+img,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+/* Headings and text rhythm */
+h1,
+h2,
+h3 {
+  margin: 0 0 var(--space-3);
+  line-height: 1.2;
+}
+
+h1 { font-size: clamp(2rem, 4vw, 3rem); }
+h2 { font-size: clamp(1.5rem, 2.5vw, 2rem); }
+h3 { font-size: 1.125rem; }
+
+p { margin: 0 0 var(--space-4); }
+.muted { color: var(--color-muted); }
+
+/* Layout helpers */
+.container {
+  width: min(1100px, 92%);
+  margin-inline: auto;
+}
+
+.section {
+  padding-block: var(--space-12);
+}
+
+/* =========================
+   Navigation
+   ========================= */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: linear-gradient(180deg, rgba(11, 18, 34, 0.9), rgba(17, 24, 39, 0.9));
+  backdrop-filter: saturate(120%) blur(8px);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding-block: var(--space-3);
+}
+
+.brand {
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+
+.nav__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.nav__list a {
+  display: inline-block;
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-sm);
+  color: var(--color-text);
+}
+
+.nav__list a:hover {
+  background: rgba(96, 165, 250, 0.12);
+}
+
+/* =========================
+   Hero
+   ========================= */
+.hero {
+  padding-block: calc(var(--space-12) + 0.5rem);
+  background: radial-gradient(800px 300px at 20% 10%, rgba(37, 99, 235, 0.25), transparent 60%),
+    radial-gradient(700px 300px at 80% -5%, rgba(96, 165, 250, 0.2), transparent 55%),
+    var(--color-hero);
+  border-bottom: 1px solid var(--color-border);
+  box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.02);
+}
+
+.hero p {
+  max-width: 60ch;
+  color: var(--color-muted);
+}
+
+/* =========================
+   Buttons
+   ========================= */
+.btn {
+  display: inline-block;
+  padding: 0.65rem 1rem;
+  background: linear-gradient(180deg, var(--color-accent), var(--color-accent-strong));
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  transition: transform 120ms ease, box-shadow 120ms ease, filter 120ms ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn--secondary {
+  background: transparent;
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+}
+
+.btn--secondary:hover {
+  background: rgba(96, 165, 250, 0.08);
+}
+
+/* =========================
+   Cards
+   ========================= */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-6);
+}
+
+.card {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01)), var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  box-shadow: var(--shadow-sm);
+}
+
+.card h3 { margin-bottom: var(--space-3); }
+.card p { color: var(--color-muted); }
+
+/* =========================
+   Box Model Demo
+   ========================= */
+.box-demo-wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(240px, 1fr));
+  gap: var(--space-6);
+  align-items: start;
+}
+
+.box-demo {
+  /* With border-box, width includes border + padding */
+  width: 260px;
+  padding: 16px;            /* padding increases internal space */
+  border: 8px solid #22c55e;/* green border to visualize */
+  margin: 12px;             /* external spacing (separates from neighbors) */
+  background: #064e3b;      /* dark green background to show content box */
+  color: #d1fae5;           /* readable text in the demo */
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.box-demo--alt {
+  /* Demonstrate content-box vs border-box (wider overall width) */
+  box-sizing: content-box;
+  width: 260px;             /* now excludes padding and border from width */
+  padding: 28px;
+  border: 12px solid #f59e0b;/* amber border */
+  background: #78350f;      /* dark amber background */
+  color: #fffbeb;           /* light text */
+}
+
+/* Make demo text spacing obvious */
+.box-demo p { margin: 0; }
+
+/* =========================
+   Forms
+   ========================= */
+.form {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01)), var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+}
+
+.form__row { margin-bottom: var(--space-5); }
+.form__row:last-child { margin-bottom: 0; }
+
+.form label {
+  display: block;
+  margin-bottom: var(--space-2);
+}
+
+.form input,
+.form textarea {
+  width: 100%;
+  padding: var(--space-3) var(--space-4);
+  background: #0b1020;
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  outline: none;
+  transition: border-color 120ms ease, box-shadow 120ms ease;
+}
+
+.form input::placeholder,
+.form textarea::placeholder { color: #6b7280; }
+
+.form input:focus,
+.form textarea:focus {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.2);
+}
+
+/* =========================
+   Footer
+   ========================= */
+.site-footer {
+  border-top: 1px solid var(--color-border);
+  background: var(--color-surface);
+  padding-block: var(--space-6);
+  text-align: center;
+}
+
+/* =========================
+   Responsive
+   ========================= */
+@media (max-width: 900px) {
+  .card-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .box-demo-wrapper {
+    grid-template-columns: 1fr;
+    justify-items: start;
+  }
+}
+
+@media (max-width: 640px) {
+  .nav { flex-wrap: wrap; }
+  .nav__list { flex-wrap: wrap; }
+  .section { padding-block: var(--space-10); }
+  .hero { padding-block: var(--space-10); }
+  .card-grid { grid-template-columns: 1fr; }
+}
